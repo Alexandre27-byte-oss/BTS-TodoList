@@ -1,4 +1,5 @@
 import "./Todo.css";
+import { TodoItem } from "./TodoItem";
 
 type TodoListProps = {
   todos: Array<string>;
@@ -16,22 +17,15 @@ export const TodoList = (props: TodoListProps) => {
   return (
     <>
       <h2>{nbTodos} todos itms</h2>
-      <ul className="list">
+      <ul className="list" style={{ maxWidth: "30rem" }}>
         {props.todos.map((todo, i) => {
           return (
-            <li
+            <TodoItem
               key={i}
-              style={{
-                background: i % 2 === 0 ? "white" : "rgba(0,0,0,0/.2)",
-                padding: "1rem 2rem",
-                borderRadius: "5px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              {todo};<button onClick={() => handleClick(i)}>Supprimer</button>
-            </li>
+              isOdd={i % 2 === 0}
+              todo={todo}
+              onItemRemoved={() => handleClick(i)}
+            />
           );
         })}
       </ul>
