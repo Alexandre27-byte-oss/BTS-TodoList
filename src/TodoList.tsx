@@ -20,7 +20,15 @@ export const TodoList = (props: TodoListProps) => {
         {props.todos.map((todo, i) => {
           return (
             <li
-              style={{ background: i % 2 === 0 ? "white" : "rgba(0,0,0,0/.2)" }}
+              key={i}
+              style={{
+                background: i % 2 === 0 ? "white" : "rgba(0,0,0,0/.2)",
+                padding: "1rem 2rem",
+                borderRadius: "5px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
             >
               {todo};<button onClick={() => handleClick(i)}>Supprimer</button>
             </li>
